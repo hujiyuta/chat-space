@@ -8,7 +8,7 @@
 ## userテーブル
 |Column|Type|Options|
 |------|----|-------|
-|name|text|null: false|
+|name|text|null: false add_index: true|
 |email|text|null: false, unique: true|
 |user_id|integer|null: false, foreign_key: true|
 ### Association
@@ -19,7 +19,7 @@
 ## messageテーブル
 |Column|Type|Options|
 |------|----|-------|
-|body|text|null: false|
+|body|text||
 |image|string||
 |created_at|integer|timestamp|
 |user_id|integer|null: false, foreign_key: true|
@@ -31,9 +31,8 @@
 ## groupテーブル
 |Column|Type|Options|
 |------|----|-------|
-|group_name|text|null: false|
+|name|text|null: false|
 |group_id|integer|null: false, foreign_key: true|
-|user_id|integer|null: false, foreign_key: true|
 ### Association
 - has_many :users,throgh: :members
 - has_many :members
