@@ -10,7 +10,6 @@
 |------|----|-------|
 |name|text|null: false add_index: true|
 |email|text|null: false, unique: true|
-|user_id|integer|null: false, foreign_key: true|
 ### Association
 - has_many :groups, through::members
 - has_many :members
@@ -32,7 +31,6 @@
 |Column|Type|Options|
 |------|----|-------|
 |name|text|null: false|
-|group_id|integer|null: false, foreign_key: true|
 ### Association
 - has_many :users,throgh: :members
 - has_many :members
