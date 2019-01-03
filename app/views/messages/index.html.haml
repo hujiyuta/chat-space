@@ -1,4 +1,11 @@
 !!!
 %html
  %body
-  仮置きのindexファイル
+ .chat-side
+  .chat-side__user
+   .chat-side__user-content
+    .chat-side__user-name User Name
+    %a{ class: 'chat-side__user--new-group', href: '#' }
+     %i.fa.fa-pencil-square-o
+    %a{ class: 'chat-side__user--edit-user', href: '#' }
+     %i.fa.fa-cog
