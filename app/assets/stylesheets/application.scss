@@ -1,3 +1,4 @@
-@import "./reset";
-@import "./variable";/* 変数の読み込み */
+@import "_chat_side";
+@import "../stylesheets/configs/reset";
+@import "../stylesheets/configs/variable";/* 変数の読み込み */
 @import "font-awesome.css";
