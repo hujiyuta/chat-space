@@ -1,0 +1,23 @@
+.chat-main
+  .chat-main__header
+    .chat-main__header--group
+      .chat-main__header--group-name
+        group_name2
+      .chat-main__header--group-edit-btn
+        =link_to "edit", "#"
+    .chat-main__header-members
+      members
+  .chat-main__body
+    .chat-main__body--messages-list
+      .chat-main__message
+        .chat-main__message-name user_name_2
+        .chat-main__message-time  2019/1/2
+        .chat-main__message-body  text2
+  .chat-main__footer
+    %form.chat-main__footer-form
+      .chat-main__footer-body
+        %input.message{ placeholder: "type a message"}
+        %label.chat-file
+          %input.image{ type: "file"}
+          %i.fa.fa-image
+      %input.submit{ type: "submit", value: "SEND"}
