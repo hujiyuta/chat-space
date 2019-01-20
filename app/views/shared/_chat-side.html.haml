@@ -11,10 +11,9 @@
           %i.fa.fa-cog
   .chat-side__groups
     .chat-side__groups-list
-      .chat-side__group
-        - current_user.groups.each do |group|
-          = link_to group_messages_path(group) do
-            .chat-side__group-name
+      - current_user.groups.each do |group|
+        = link_to group_messages_path(group), class:"chat-side__group" do
+          .chat-side__group-name
             = group.name
-            .chat-side__group-message
-              メッセージなし
+          .chat-side__group-message
+            = group.show_last_message#modelからアルゴを回す
