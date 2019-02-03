@@ -1,10 +1,6 @@
 class MessagesController < ApplicationController
   before_action :set_group
 
-  # def new
-  #   @message = Message.new
-  # end
-
   def index
     @message = Message.new
     @messages = @group.messages.includes(:user)
@@ -17,7 +13,10 @@ class MessagesController < ApplicationController
         format.html { redirect_to group_messages_path(@group), notice: "メッセージ送信成功" }
         format.json#TODO:1回目の投稿後に送信ボタンが押せない
       else#TODO:条件を詳細にする
-        format.html{ render :index }
+        format.html{
+           @messages = @group.messages.includes(:user)
+           flash.now[:alert] = "メッセージを入力してください"
+           render :index }
       end
     end
     # if @message.save
@@ -27,7 +26,6 @@ class MessagesController < ApplicationController
     #   flash.now[:alert] = "メッセージを入力してください"
     #   render :index
     # end
-
   end
 
   private

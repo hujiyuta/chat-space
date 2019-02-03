@@ -35,10 +35,16 @@ $(function(){
       $('.chat-main__body').animate({//:最新の投稿までスクロール
           scrollTop: page_height
         },1500);
-    })
     // .success(function(json){//ajax通信が出来ているかの確認
     //   console.log("success",json);
     // })
+    })
+    .fail(function(){//ajax通信に失敗時の処理
+      alert('投稿に失敗しました。メッセージを入力してください。')
+    })
+    .always(function(){//railsのデフォ機能の2重送信防止機能を解除
+      $(".form__submit").removeAttr("disabled");
+    })
   })
 });
 
