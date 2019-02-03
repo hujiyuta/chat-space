@@ -18,8 +18,7 @@ $(function(){
     // console.log(formData)
     // var url = $('.group_id').attr('value');//group_idが取得できてない。
     var url = $(this).attr('action')//formの送信先のURLを取得
-    // var url = '/groups/' + group_id + '/messages.json'
-    // console.log(url)
+
     $.ajax({
       url: url,
       type: "POST",
@@ -28,10 +27,14 @@ $(function(){
       processData: false,
       contentType: false
     })
-    .done(function(data){
+    .done(function(data){//ajaxの非同期通信が成功した後の処理
       var html = buildHTML(data);
-      $('.chat-main__message').append(html)
-      $('.chat-main__footer-body').val('')
+      $('.chat-main__message').append(html)//JSONからhtmlを生成
+      $('.chat-main__footer-body').val('')//formを空欄にする
+      var page_height = $('.chat-main__body--messages-list').height()//メッセージ一覧の高さを取得
+      $('.chat-main__body').animate({//:最新の投稿までスクロール
+          scrollTop: page_height
+        },1500);
     })
     // .success(function(json){//ajax通信が出来ているかの確認
     //   console.log("success",json);
