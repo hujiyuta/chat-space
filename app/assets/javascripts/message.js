@@ -1,5 +1,5 @@
 $(function(){
-  function buildHTML(data){//formの入力データを引数dataとして処理
+  function buildMessageHTML(data){//formの入力データを引数dataとして処理
     var html =`<div class="chat-main__message-name">
                  ${data.user_name}
                </div>
@@ -24,8 +24,8 @@ $(function(){
       processData: false,
       contentType: false
     })
-    .done(function(data){//ajaxの非同期通信が成功した後の処理
-      var html = buildHTML(data);
+    .done(function(formData){//ajaxの非同期通信が成功した後の処理
+      var html = buildMessageHTML(formData);
       $('.chat-main__message').append(html)//JSONからhtmlを生成
       $('.chat-main__footer-body').val('')//formを空欄にする
       var page_height = $('.chat-main__body--messages-list').height()//メッセージ一覧の高さを取得
