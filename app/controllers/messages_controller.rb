@@ -13,8 +13,12 @@ class MessagesController < ApplicationController
   def create
     @message = @group.messages.new(message_params)
     respond_to do |format|
-      format.html { redirect_to group_messages_path(@group), notice: "メッセージ送信成功" }
-      format.json
+      if @message.save
+        format.html { redirect_to group_messages_path(@group), notice: "メッセージ送信成功" }
+        format.json#TODO:1回目の投稿後に送信ボタンが押せない
+      else#TODO:条件を詳細にする
+        format.html{ render :index }
+      end
     end
     # if @message.save
     #   redirect_to group_messages_path(@group), notice: "メッセージ送信成功"
