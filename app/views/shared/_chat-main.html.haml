@@ -4,7 +4,7 @@
       .chat-main__header--group-name
         =@group.name
       .chat-main__header--group-edit-btn
-        =link_to "edit", "#"
+        =link_to "edit", edit_group_path(@group)
     .chat-main__header-members
       members
   .chat-main__body
