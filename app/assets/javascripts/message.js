@@ -18,7 +18,6 @@ $(function(){
     e.preventDefault();
     var formData = new FormData(this);//formの入力データの取得
     var url = $(this).attr('action')//formの送信先のURLを取得
-    console.log(formData)
     $.ajax({
       url: url,
       type: "POST",
@@ -50,7 +49,7 @@ $(function(){
   function update(){ //この関数では以下のことを行う
     // var message_id = $('.message:last').data('id');//html要素（message）の最後のkeyとvalueを取得
     if($('.message')[0]){ //もし'messages'というクラスがあったら
-      var message_id = $('.message:last').data('id'); //一番最後にある'messages'というクラスの'id'というデータ属性を取得し、'message_id'という変数に代入
+      var message_id = $('.message:last').data('id'); //html要素（message）の最後のkeyとvalueを取得
     } else { //ない場合は
       var message_id = 0 //0を代入
     }

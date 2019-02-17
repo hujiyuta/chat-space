@@ -28,11 +28,11 @@ class MessagesController < ApplicationController
 
   private
 
-  def message_params#rquireでmessageインスタンスを生成する時に受け取るキーを設定
+  def message_params#requireでmessageインスタンスを生成する時に受け取るキーを設定
     params.require(:message).permit(:content, :image).merge(user_id: current_user.id)
   end
 
-  def set_group#
+  def set_group
     @group = Group.find(params[:group_id])
   end
 
