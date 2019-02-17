@@ -1,9 +1,14 @@
 class MessagesController < ApplicationController
-  before_action :set_group
+  before_action :set_group#処理実行前にグループ検索
 
   def index
     @message = Message.new
-    @messages = @group.messages.includes(:user)
+    @messages = @group.messages.includes(:user)#特定のグループidに適合したmessagesモデルのデータを取得
+    respond_to do |format|
+      format.html
+      format.json { @new_message = @messages.where('id > ?', params[:message][:id]) }
+       # json形式でアクセスがあった場合は、params[:message][:id]よりも大きいidがないかMessageから検索して、@new_messageに代入する
+    end
   end
 
   def create
@@ -23,7 +28,7 @@ class MessagesController < ApplicationController
 
   private
 
-  def message_params
+  def message_params#requireでmessageインスタンスを生成する時に受け取るキーを設定
     params.require(:message).permit(:content, :image).merge(user_id: current_user.id)
   end
 
