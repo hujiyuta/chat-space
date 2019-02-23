@@ -1,18 +1,34 @@
-$(function(){
+$(document).on('turbolinks:load',function(){
   function buildMessageHTML(data){//formの入力データを引数dataとして処理
-    var html =`<div class="message" data-id ="${data.id}">
-                 <div class="chat-main__message-name">
-                   ${data.user_name}
-                 </div>
-                 <div class="chat-main__message-time">
-                   ${data.created_at}
-                 </div>
-                 <div class="chat-main__message-body">
-                   ${data.text}
-                   <img class="lower-message__image" src="${data.image}">
-                 </div>
-               </div>`
-    return html;
+    if(data.image != null){//ここにif条件でimageが有るか無いかで生成するhtmlを分ける
+      var html =`<div class="message" data-id ="${data.id}">
+                   <div class="chat-main__message-name">
+                     ${data.user_name}
+                   </div>
+                   <div class="chat-main__message-time">
+                     ${data.created_at}
+                   </div>
+                   <div class="chat-main__message-body">
+                     ${data.text}
+                     <img class="lower-message__image" src="${data.image}">
+                   </div>
+                 </div>`
+      return html;
+    }
+    else{
+      var html =`<div class="message" data-id ="${data.id}">
+                   <div class="chat-main__message-name">
+                     ${data.user_name}
+                   </div>
+                   <div class="chat-main__message-time">
+                     ${data.created_at}
+                   </div>
+                   <div class="chat-main__message-body">
+                     ${data.text}
+                   </div>
+                 </div>`
+      return html;
+    }
   }
   $('#new_message').on('submit', function(e){
     e.preventDefault();

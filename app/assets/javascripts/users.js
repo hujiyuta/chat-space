@@ -1,4 +1,4 @@
-$(function() {
+$(document).on('turbolinks:load',function() {
   $("#user-search-field").on("keyup", function() {//フォームが入力される度に検索
     function buildUserHTML(user) {//検索結果(ヒットがある場合)を生成するHTML
       var html = `<div class="chat-group-user clearfix">
