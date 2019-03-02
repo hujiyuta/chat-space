@@ -11,7 +11,7 @@ set :rbenv_ruby, '2.3.1'
 
 set :ssh_options, {#以下を修正している
     auth_methods: %w(publickey),
-    forward_argent: ture,#追記
+    forward_argent: true,#追記
     keys: %w(~/.ssh/Key_pair.pem)
 # keys: ['~/.ssh/Key_pair.pem']#個々のローカルPCのEC2インスタンスのSSH鍵(pem)へのパスは間違っている可能性
 }
