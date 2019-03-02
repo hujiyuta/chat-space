@@ -9,12 +9,14 @@ set :linked_dirs, fetch(:linked_dirs, []).push('log', 'tmp/pids', 'tmp/cache', '
 set :rbenv_type, :user
 set :rbenv_ruby, '2.3.1'
 
-set :ssh_options, {#以下を修正している
-    auth_methods: %w(publickey),
-    forward_argent: true,#追記
-    keys: %w(~/.ssh/Key_pair.pem)
-# keys: ['~/.ssh/Key_pair.pem']#個々のローカルPCのEC2インスタンスのSSH鍵(pem)へのパスは間違っている可能性
-}
+set :ssh_options, auth_methods: ['publickey'],
+                  keys: ['~/.ssh/Key_pair.pem']
+# set :ssh_options, {#以下を修正している
+#     auth_methods: %w(publickey),
+#     forward_argent: true,#追記
+#     keys: %w(~/.ssh/Key_pair.pem)
+# # keys: ['~/.ssh/Key_pair.pem']#個々のローカルPCのEC2インスタンスのSSH鍵(pem)へのパスは間違っている可能性
+# }
 
 set :unicorn_pid, -> { "#{shared_path}/tmp/pids/unicorn.pid" }
 set :unicorn_config_path, -> { "#{current_path}/config/unicorn.rb" }
