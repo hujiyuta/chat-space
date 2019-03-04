@@ -1,5 +1,5 @@
 class GroupsController < ApplicationController
-   before_action :set_group, only: [:edit, :update]#アクション実行前にset_groupを読み込み
+   before_action :set_group, only: [:index, :edit, :update]#アクション実行前にset_groupを読み込み
 
    def index
    end
