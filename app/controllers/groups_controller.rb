@@ -1,16 +1,17 @@
 class GroupsController < ApplicationController
-   before_action :set_group, only: [:index, :edit, :update]#アクション実行前にset_groupを読み込み
+   before_action :set_group, only: [:edit, :update]#アクション実行前にset_groupを読み込み
 
    def index
    end
 
    def new
       @group = Group.new
-      @group.users << current_user
+      @group.users << current_user#ログインユーザーを配列要素に初期設定で追加
    end
 
    def create
       @group = Group.new(group_params)
+      @group.users << current_user#ログインユーザーは初期設定で参加させる
       if @group.save
          redirect_to root_path, notice: "グループを作成しました"
       else
@@ -19,6 +20,7 @@ class GroupsController < ApplicationController
    end
 
    def edit
+
    end
 
    def update

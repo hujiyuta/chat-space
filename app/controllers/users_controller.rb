@@ -1,7 +1,9 @@
 class UsersController < ApplicationController
 
   def index
-    @users = User.where('name LIKE(?)', "%#{params[:keyword]}%") #paramsとして送られてきたkeyword（入力された語句）で、Userモデルのnameカラムを検索し、その結果を@usersに代入する
+    @users = User.where('name LIKE(?)', "%#{params[:keyword]}%" )
+    # @users = User.where('name LIKE(?) and id != ?', "%#{params[:keyword]}%","#{current_user.id}")
+    #paramsとして送られてきたkeyword（入力された語句）で、Userモデルのnameカラムを検索し、その結果を@usersに代入する
     respond_to do |format|
       # format.html
       # format.json
