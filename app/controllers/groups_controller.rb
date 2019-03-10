@@ -6,7 +6,7 @@ class GroupsController < ApplicationController
 
    def new
       @group = Group.new
-      @group.users << current_user#ログインユーザーを配列要素に初期設定で追加
+      # @group.users << current_user#ログインユーザーを配列要素に初期設定で追加
    end
 
    def create
@@ -20,11 +20,11 @@ class GroupsController < ApplicationController
    end
 
    def edit
-
+      #todo:ここにレスポンス分けて記載
    end
 
    def update
-      if @group.update(group_params)
+      if @group.update(group_params)#TODO:group_paramsの設定で追加したユーザを配列追加にする。今は代入になっているため既存のユーザが上書きされている？
          redirect_to group_messages_path(@group), notice: "グループを編集しました"
       else
          render :edit
@@ -34,6 +34,7 @@ class GroupsController < ApplicationController
    private
    def group_params
       params.require(:group).permit(:name, user_ids: [] )
+      # params.permit(:name, user_ids: [] )
    end
 
    def set_group

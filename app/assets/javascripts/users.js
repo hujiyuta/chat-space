@@ -52,7 +52,7 @@ $(document).on('turbolinks:load',function() {
                 user_name: $(this).attr('data-user-name')
               };
               var html = addUserHTML(add_user_info);
-              $('#chat-group-users').append(html)//追加したユーザをチャットメンバーに追加する処理
+              $('#chat-group-users').append(html)//TODO:追加する場所が間違っているため、既に登録されているユーザが削除されてしまう。追加したユーザをチャットメンバーに追加する処理
               $(this).parent().remove();//追加したユーザー結果を削除
               $('.user-search-remove.chat-group-user__btn.chat-group-user__btn--remove.js-remove-btn').on('click', function(){//
                 $(this).parent().remove();//間違えて登録したユーザーを削除
@@ -69,5 +69,8 @@ $(document).on('turbolinks:load',function() {
     .fail(function(){//ajax通信に失敗時の処理
       alert('ユーザー検索に失敗しました。')
     })
+  });
+  $('.user-search-remove.chat-group-user__btn.chat-group-user__btn--remove.js-remove-btn').on('click', function(){//
+    $(this).parent().remove();//間違えて登録したユーザーを削除
   });
 });
